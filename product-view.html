@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | ShopEase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header-fixes.css">
+   
+    <style>
+        /* Updated Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #333;
+        }
+        
+        .logo h1 span {
+            color: #4CAF50;
+        }
+        
+        .nav-links ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+            position: relative;
+        }
+        
+        .nav-links a {
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #4CAF50;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #4CAF50;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex: 1;
+            max-width: 400px;
+            margin: 0 20px;
+        }
+        
+        .search-container input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .search-container input:focus {
+            border-color: #4CAF50;
+            outline: none;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+        }
+        
+        .search-btn {
+            position: absolute;
+            right: 10px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: #888;
+            transition: all 0.3s ease;
+        }
+        
+        .search-btn:hover {
+            color: #4CAF50;
+        }
+        
+        .cart-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-right: 20px;
+            font-size: 1.2rem;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        
+        .cart-icon:hover {
+            color: #4CAF50;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        
+        /* Mobile Responsive Navbar Fixes */
+        @media screen and (max-width: 992px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -300px;
+                background-color: white;
+                width: 270px;
+                height: 100vh;
+                padding: 30px 20px;
+                transition: all 0.3s ease;
+                box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+                width: 100%;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .search-container {
+                display: none;
+            }
+            
+            .search-container.active {
+                display: block;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                padding: 10px;
+                background-color: white;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+        }
+        
+        /* Product Details Page Specific Styles */
+        .product-main {
+            width: 100%;
+            overflow-x: hidden;
+        }
+        
+        .product-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .product-images {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: sticky;
+            top: 100px;
+        }
+
+        .main-image-container {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .main-image:hover {
+            transform: scale(1.05);
+        }
+
+        .image-thumbnails {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .thumbnail:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .thumbnail.active {
+            border-color: #4CAF50;
+        }
+
+        .product-details {
+            background-color: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .breadcrumb a {
+            color: #4CAF50;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: #45a049;
+        }
+
+        .breadcrumb i {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .product-title {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .product-category {
+            color: #4CAF50;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            display: inline-block;
+            text-transform: capitalize;
+            background: #e8f5e9;
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        .stars {
+            color: #ffc107;
+            font-size: 18px;
+        }
+
+        .review-count {
+            color: #666;
+            font-size: 14px;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            gap: 15px;
+        }
+
+        .current-price {
+            font-size: 32px;
+            font-weight: 700;
+            color: #4CAF50;
+        }
+
+        .old-price {
+            font-size: 20px;
+            color: #aaa;
+            text-decoration: line-through;
+        }
+
+        .discount {
+            background-color: #ff5722;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .availability {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #4CAF50;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+
+        .availability.out-of-stock {
+            background: #ffebee;
+            color: #f44336;
+        }
+
+        .product-options {
+            margin-bottom: 30px;
+        }
+
+        .option-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .color-selector {
+            display: flex;
+            gap: 12px;
+        }
+
+        .color-option {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .color-option::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .color-option.active::after {
+            border-color: #4CAF50;
+        }
+
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+
+        .quantity-selector {
+            margin-bottom: 30px;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            width: fit-content;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .quantity-btn {
+            width: 45px;
+            height: 45px;
+            background-color: #f5f5f5;
+            border: none;
+            color: #333;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background-color: #e0e0e0;
+        }
+
+        .quantity-controls input {
+            width: 60px;
+            height: 45px;
+            border: none;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0;
+            width: 100%;
+        }
+
+        .add-to-cart-btn {
+            flex: 1;
+            height: 50px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+        }
+
+        .add-to-cart-btn i {
+            font-size: 20px;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            width: fit-content;
+        }
+
+        .product-description {
+            margin-top: 40px;
+        }
+
+        .description-title {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .description-text {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-size: 15px;
+        }
+
+        .product-highlights {
+            margin-top: 25px;
+        }
+
+        .highlights-title {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .highlights-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .highlights-list li {
+            margin-bottom: 12px;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .highlights-list li i {
+            color: #4CAF50;
+            font-size: 14px;
+        }
+
+        /* Product Specifications */
+        .product-specifications {
+            display: none;
+        }
+
+        /* Update Specifications styling for horizontal layout */
+        .specifications-section {
+            margin-top: 30px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .specifications-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding-bottom: 10px;
+        }
+
+        .specifications-header h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .toggle-specifications {
+            background: none;
+            border: none;
+            color: #4CAF50;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-specifications:hover {
+            background-color: rgba(76, 175, 80, 0.1);
+        }
+
+        .toggle-specifications i {
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-specifications.active i {
+            transform: rotate(180deg);
+        }
+
+        .specifications-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .specifications-content.active {
+            max-height: 1000px; /* Adjust this value based on your content */
+            transition: max-height 0.5s ease-in;
+        }
+
+        .specifications-grid {
+            padding-top: 15px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        /* Related Products Section */
+        .related-products {
+            padding: 40px 5%;
+            background-color: #f8f9fa;
+            margin-top: 40px;
+        }
+
+        .related-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .related-product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .related-product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .related-product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .related-product-info {
+            padding: 20px;
+        }
+
+        .related-product-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .related-product-price {
+            color: #4CAF50;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        /* Improved Mobile Responsiveness */
+        @media screen and (max-width: 1200px) {
+            .product-container {
+                padding: 0 20px;
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            .product-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .product-images {
+                position: static;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .main-image-container {
+                height: 400px;
+            }
+
+            .product-details {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 25px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .product-container {
+                margin: 30px auto;
+                gap: 25px;
+            }
+
+            .product-actions {
+                flex-wrap: wrap;
+            }
+
+            .add-to-cart-btn {
+                flex: 1 1 100%;
+            }
+
+            .quantity-controls {
+                flex: 1 1 100%;
+                margin: 0 auto;
+            }
+
+            .main-image-container {
+                height: 350px;
+            }
+
+            .product-title {
+                font-size: 26px;
+            }
+
+            .related-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 20px;
+            }
+
+            .specifications-section,
+            .description-section,
+            .highlights-section {
+                padding: 15px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .product-container {
+                padding: 0 15px;
+                margin: 20px auto;
+            }
+
+            .main-image-container {
+                height: 300px;
+            }
+
+            .product-details {
+                padding: 20px 15px;
+            }
+
+            .product-title {
+                font-size: 24px;
+            }
+
+            .current-price {
+                font-size: 26px;
+            }
+
+            .old-price {
+                font-size: 18px;
+            }
+
+            .color-options {
+                justify-content: center;
+            }
+
+            .related-products {
+                padding: 30px 15px;
+            }
+
+            .related-title {
+                font-size: 24px;
+                margin-bottom: 25px;
+            }
+
+            .thumbnail {
+                width: 60px;
+                height: 60px;
+            }
+
+            .image-magnifier-container .magnified-image {
+                display: none; /* Hide magnified image on very small screens */
+            }
+
+            .breadcrumb {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .main-image-container {
+                height: 250px;
+            }
+
+            .product-title {
+                font-size: 22px;
+            }
+
+            .current-price {
+                font-size: 24px;
+            }
+
+            .product-category {
+                font-size: 12px;
+            }
+
+            .image-control {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        /* Image magnifier and other existing styles */
+        .image-magnifier-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            cursor: zoom-in;
+        }
+
+        .magnifier-lens,
+        .magnified-image {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Image controls improvement for better visibility */
+        .image-controls {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .image-control {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            color: #4CAF50;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            pointer-events: auto;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-control:hover {
+            background: #4CAF50;
+            color: white;
+        }
+
+        /* Ensure proper wrapping for color options */
+        .color-options {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        /* Fix for magnifier lens that was missing */
+        .magnifier-lens {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border: 2px solid #4CAF50;
+            border-radius: 50%;
+            pointer-events: none;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 5;
+        }
+        
+        /* Fix for magnified image that was missing */
+        .magnified-image {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 300px;
+            height: 300px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            background-color: white;
+            pointer-events: none;
+            z-index: 10;
+            background-repeat: no-repeat;
+            margin-left: 20px;
+        }
+        
+        /* Restore hover effects for magnifier */
+        .main-image-container:hover .magnifier-lens,
+        .main-image-container:hover .magnified-image {
+            opacity: 1;
+        }
+        
+        /* Better alignment for rating container */
+        .rating-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        /* Price container alignment */
+        .price-container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        /* Fix for description and highlights */
+        .description-section, 
+        .highlights-section {
+            margin-top: 30px;
+        }
+        
+        /* Better alignment for color section */
+        .color-section {
+            margin: 25px 0;
+        }
+        
+        .color-section h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        /* Fix for thumbnails */
+        .image-thumbnails {
+            margin-top: 20px;
+        }
+        
+        /* Add hover effect to product image */
+        .image-magnifier-container:hover .main-image {
+            transform: scale(1.05);
+        }
+        
+        /* Fix breadcrumb overflow issue */
+        .breadcrumb {
+            word-break: break-word;
+        }
+        
+        /* Enhanced responsive styles for section spacing */
+        @media screen and (max-width: 992px) {
+            .related-products {
+                margin-top: 30px;
+            }
+            
+            .product-description {
+                margin-top: 25px;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .product-actions {
+                margin: 20px 0;
+            }
+            
+            .description-section h3,
+            .highlights-section h3,
+            .specifications-header h3 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Main Product View -->
+    <main class="product-main">
+        <div class="product-container">
+            <!-- Product Images Section -->
+            <div class="product-images">
+                <div class="main-image-container">
+                    <div class="image-magnifier-container">
+                        <img src="https://placehold.co/600x600/f8f9fa/4CAF50?text=Product+Image" alt="Product Image" class="main-image" id="main-product-image">
+                        <div class="magnifier-lens"></div>
+                        <div class="magnified-image"></div>
+                    </div>
+                    <div class="image-controls">
+                        <button class="image-control prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="image-control next"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="image-thumbnails">
+                    <img src="https://placehold.co/120x120/f8f9fa/4CAF50?text=Image+1" alt="Product Thumbnail 1" class="thumbnail active">
+                    <img src="https://placehold.co/120x120/f8f9fa/4CAF50?text=Image+2" alt="Product Thumbnail 2" class="thumbnail">
+                    <img src="https://placehold.co/120x120/f8f9fa/4CAF50?text=Image+3" alt="Product Thumbnail 3" class="thumbnail">
+                    <img src="https://placehold.co/120x120/f8f9fa/4CAF50?text=Image+4" alt="Product Thumbnail 4" class="thumbnail">
+                </div>
+            </div>
+
+            <!-- Product Details Section -->
+            <div class="product-details">
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <a href="products.html">Products</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span id="product-category">Category</span>
+                </div>
+
+                <h1 class="product-title"></h1>
+                <span class="product-category" id="category-badge"></span>
+
+                <div class="rating-container">
+                    <div class="rating"></div>
+                    <span class="review-count"></span>
+                </div>
+
+                <div class="price-container">
+                    <div class="price">
+                        <span class="current-price"></span>
+                        <span class="original-price"></span>
+                    </div>
+                    <span class="discount-tag"></span>
+                </div>
+
+                <div class="stock-status"></div>
+
+                <div class="color-section">
+                    <h3>Available Colors</h3>
+                    <div class="color-options">
+                        <!-- Color options will be dynamically added here -->
+                    </div>
+                </div>
+
+                <div class="quantity-controls">
+                    <button class="quantity-btn minus"><i class="fas fa-minus"></i></button>
+                    <input type="number" value="1" min="1" id="quantity" class="quantity-input">
+                    <button class="quantity-btn plus"><i class="fas fa-plus"></i></button>
+                </div>
+
+                <div class="product-actions">
+                    <button class="add-to-cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        Add to Cart
+                    </button>
+                </div>
+
+                <div class="description-section">
+                    <h3>Description</h3>
+                    <p class="product-description"></p>
+                </div>
+
+                <div class="highlights-section">
+                    <h3>Highlights</h3>
+                    <ul class="highlights-list">
+                        <!-- Highlights will be dynamically added here -->
+                    </ul>
+                </div>
+
+                <div class="specifications-section">
+                    <div class="specifications-header">
+                        <h3>Specifications</h3>
+                        <button class="toggle-specifications">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div class="specifications-content">
+                        <div class="specifications-grid">
+                            <!-- Specifications will be dynamically added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Products Section -->
+        <section class="related-products">
+            <h2 class="related-title">You May Also Like</h2>
+            <div class="related-grid" id="related-products">
+                <!-- Related products will be dynamically added here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- JavaScript -->
+    <script src="js/components.js"></script>
+    <script src="js/product.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/navigation.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let currentProduct = null;
+            let quantity = 1;
+
+            // Get product ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = parseInt(urlParams.get('id'));
+
+            // Helper to find product by ID
+            function findProductById(id) {
+                if (window.productData && Array.isArray(window.productData)) {
+                    return window.productData.find(product => product.id === id);
+                }
+                return null;
+            }
+
+            // Function to display product details
+            function displayProductDetails(product) {
+                if (!product) return;
+
+                // Update product title
+                document.querySelector('.product-title').textContent = product.name;
+                
+                // Update category
+                document.querySelector('#product-category').textContent = product.category;
+                document.querySelector('#category-badge').textContent = product.category;
+                
+                // Update price
+                document.querySelector('.current-price').textContent = `₹${product.price}`;
+                if (product.originalPrice) {
+                    document.querySelector('.original-price').textContent = `₹${product.originalPrice}`;
+                    const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
+                    document.querySelector('.discount-tag').textContent = `${discount}% off`;
+                }
+                
+                // Update rating
+                const ratingDiv = document.querySelector('.rating');
+                if (ratingDiv && product.rating) {
+                    const fullStars = Math.floor(product.rating);
+                    const hasHalfStar = product.rating % 1 !== 0;
+                    let starsHTML = '';
+                    
+                    for (let i = 0; i < 5; i++) {
+                        if (i < fullStars) {
+                            starsHTML += '<i class="fas fa-star"></i>';
+                        } else if (i === fullStars && hasHalfStar) {
+                            starsHTML += '<i class="fas fa-star-half-alt"></i>';
+                        } else {
+                            starsHTML += '<i class="far fa-star"></i>';
+                        }
+                    }
+                    ratingDiv.innerHTML = starsHTML;
+                }
+                
+                // Update review count
+                const reviewCount = document.querySelector('.review-count');
+                if (reviewCount && product.reviews) {
+                    reviewCount.textContent = `(${product.reviews} reviews)`;
+                }
+                
+                // Update product description
+                const descriptionElement = document.querySelector('.product-description');
+                if (descriptionElement && product.description) {
+                    descriptionElement.textContent = product.description;
+                }
+
+                // Update main product image
+                const mainImage = document.getElementById('main-product-image');
+                if (mainImage && product.images && product.images.length > 0) {
+                    mainImage.src = product.images[0];
+                    mainImage.alt = product.name;
+                }
+            }
+
+            // Initialize quantity controls
+            function initializeQuantityControls() {
+                const quantityInput = document.getElementById('quantity');
+                const minusBtn = document.querySelector('.quantity-btn.minus');
+                const plusBtn = document.querySelector('.quantity-btn.plus');
+                
+                if (quantityInput && minusBtn && plusBtn) {
+                    quantityInput.addEventListener('change', function() {
+                        quantity = Math.max(1, parseInt(this.value) || 1);
+                        this.value = quantity;
+                    });
+                    
+                    minusBtn.addEventListener('click', function() {
+                        quantity = Math.max(1, parseInt(quantityInput.value) - 1);
+                        quantityInput.value = quantity;
+                    });
+                    
+                    plusBtn.addEventListener('click', function() {
+                        quantity = parseInt(quantityInput.value) + 1;
+                        quantityInput.value = quantity;
+                    });
+                }
+            }
+
+            // Function to add product to cart
+            function addProductToCart(product, quantity) {
+                if (!product || !product.id || !product.name || !product.price) {
+                    console.error('Invalid product data:', product);
+                    return;
+                }
+
+                try {
+                    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    const existingItemIndex = cart.findIndex(item => item.id === product.id);
+
+                    if (existingItemIndex !== -1) {
+                        cart[existingItemIndex].quantity += quantity;
+                    } else {
+                        cart.push({
+                            id: product.id,
+                            name: product.name,
+                            price: product.price,
+                            quantity: quantity,
+                            image: (product.images && product.images[0]) || `https://placehold.co/400x300/f8f9fa/4CAF50?text=${encodeURIComponent(product.name)}`,
+                            category: product.category
+                        });
+                    }
+
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    
+                    // Update cart count
+                    if (window.updateCartCount) {
+                        window.updateCartCount();
+                    }
+
+                    // Show notification
+                    if (window.showNotification) {
+                        window.showNotification(`${product.name} added to cart!`);
+                    }
+
+                    console.log('Added to cart:', product.name);
+                } catch (error) {
+                    console.error('Error adding to cart:', error);
+                }
+            }
+
+            // Initialize product page
+            function initializeProduct() {
+                currentProduct = findProductById(productId);
+                
+                if (!currentProduct) {
+                    console.error('Product not found for ID:', productId);
+                    alert('Product not found. Redirecting to products page...');
+                    window.location.href = 'products.html';
+                    return;
+                }
+
+                // Display product details
+                displayProductDetails(currentProduct);
+
+                // Initialize quantity controls
+                initializeQuantityControls();
+
+                // Add event listener to the Add to Cart button
+                const addToCartBtn = document.querySelector('.add-to-cart-btn');
+                if (addToCartBtn) {
+                    // Remove any existing event listeners
+                    const newAddToCartBtn = addToCartBtn.cloneNode(true);
+                    addToCartBtn.parentNode.replaceChild(newAddToCartBtn, addToCartBtn);
+
+                    newAddToCartBtn.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        addProductToCart(currentProduct, quantity);
+                    });
+                }
+            }
+
+            // Start initialization
+            if (!window.productData) {
+                const maxAttempts = 10;
+                let attempts = 0;
+                
+                function tryInitialize() {
+                    if (window.productData || attempts >= maxAttempts) {
+                        initializeProduct();
+                    } else {
+                        attempts++;
+                        setTimeout(tryInitialize, 100);
+                    }
+                }
+                
+                tryInitialize();
+            } else {
+                initializeProduct();
+            }
+        });
+    </script>
+</body>
+</html>

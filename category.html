@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Categories | ShopEase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header-fixes.css">
+    <style>
+        /* Category Page Specific Styles */
+        .categories-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .category-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .category-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .category-content h3 {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .category-content p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .category-count {
+            color: #4CAF50;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .explore-btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .explore-btn:hover {
+            background-color: #45a049;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            z-index: 2;
+        }
+
+        .sale-badge {
+            background-color: #f44336;
+        }
+
+        .new-badge {
+            background-color: #2196F3;
+        }
+        
+        /* Featured Collections Section */
+        .featured-collections {
+            margin-top: 60px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: #4CAF50;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .collection-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 300px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .collection-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .collection-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .collection-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            padding: 20px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .collection-card:hover .collection-overlay {
+            padding-bottom: 30px;
+        }
+
+        .collection-overlay h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .collection-overlay p {
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .collection-btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .collection-btn:hover {
+            background-color: #45a049;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 992px) {
+            .collections-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .categories-container {
+                margin: 30px auto;
+            }
+            
+            .categories-grid {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                gap: 20px;
+            }
+            
+            .category-content h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="categories-container">
+            <h1 class="page-title">Browse Categories</h1>
+            
+            <div class="categories-grid">
+                <!-- Electronics Category -->
+                <div class="category-card" data-category="electronics">
+                    <div class="category-badge">Popular</div>
+                    <img src="" alt="Electronics">
+                    <div class="category-content">
+                        <h3>Electronics</h3>
+                        <p>Explore our range of cutting-edge electronics for your home and office.</p>
+                        <div class="category-count">0 products</div>
+                        <a href="products.html?category=electronics" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+                
+                <!-- Fashion Category -->
+                <div class="category-card" data-category="fashion">
+                    <div class="category-badge sale-badge">Sale</div>
+                    <img src="" alt="Fashion">
+                    <div class="category-content">
+                        <h3>Fashion</h3>
+                        <p>Discover trendy clothing, footwear, and accessories for all styles.</p>
+                        <div class="category-count">0 products</div>
+                        <a href="products.html?category=fashion" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+                
+                <!-- Home & Kitchen Category -->
+                <div class="category-card" data-category="home">
+                    <img src="" alt="Home & Kitchen">
+                    <div class="category-content">
+                        <h3>Home & Kitchen</h3>
+                        <p>Find everything you need to make your home comfortable and stylish.</p>
+                        <div class="category-count">0 products</div>
+                        <a href="products.html?category=home" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+                
+                <!-- Beauty Category -->
+                <div class="category-card" data-category="beauty">
+                    <div class="category-badge new-badge">New</div>
+                    <img src="" alt="Beauty">
+                    <div class="category-content">
+                        <h3>Beauty</h3>
+                        <p>Shop premium skincare, makeup, and fragrances from top brands.</p>
+                        <div class="category-count">0 products</div>
+                        <a href="products.html?category=beauty" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+                
+                <!-- Sports & Fitness Category -->
+                <div class="category-card" data-category="sports">
+                    <img src="" alt="Sports & Fitness">
+                    <div class="category-content">
+                        <h3>Sports & Fitness</h3>
+                        <p>Get equipped for your active lifestyle with quality sports gear.</p>
+                        <div class="category-count">0 products</div>
+                        <a href="products.html?category=sports" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+                
+                <!-- Books Category -->
+                <div class="category-card" data-category="books">
+                    <img src="" alt="Books">
+                    <div class="category-content">
+                        <h3>Books</h3>
+                        <p>Expand your knowledge and imagination with our collection of books.</p>
+                        <div class="category-count">0 products</div>
+                        <a href="products.html?category=books" class="explore-btn">Explore</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Featured Collections Section -->
+            <div class="featured-collections">
+                <h2 class="section-title">Featured Collections</h2>
+                
+                <div class="collections-grid">
+                    <!-- Summer Collection -->
+                    <div class="collection-card" data-collection="summer">
+                        <img src="" alt="Summer Collection">
+                        <div class="collection-overlay">
+                            <h3>Summer Collection</h3>
+                            <p>Beat the heat with our cool summer essentials.</p>
+                            <a href="products.html?collection=summer" class="collection-btn">View Collection</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Tech Gadgets Collection -->
+                    <div class="collection-card" data-collection="tech">
+                        <img src="" alt="Tech Gadgets">
+                        <div class="collection-overlay">
+                            <h3>Tech Gadgets</h3>
+                            <p>Discover the latest innovations in technology.</p>
+                            <a href="products.html?collection=tech" class="collection-btn">View Collection</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- JavaScript -->
+    <script src="js/components.js"></script>
+    <script src="js/product.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+</body>
+</html> 

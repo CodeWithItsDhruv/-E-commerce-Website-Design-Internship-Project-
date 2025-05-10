@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | ShopEase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header-fixes.css">
+    <style>
+        /* Products Page Specific Styles */
+        .page-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #333;
+            margin: 30px 0;
+            font-weight: 600;
+        }
+
+        .products-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+        }
+
+        /* Filters Section */
+        .filters {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            height: fit-content;
+            position: sticky;
+            top: 90px;
+            margin: 0;
+        }
+
+        .filter-box {
+            margin-bottom: 25px;
+        }
+
+        .filter-box h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .category-filters li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .category-filters input[type="checkbox"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .category-filters label {
+            cursor: pointer;
+            color: #666;
+        }
+
+        .price-filter {
+            margin-top: 10px;
+        }
+
+        .price-filter input[type="range"] {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .price-display {
+            display: flex;
+            align-items: center;
+            color: #666;
+        }
+
+        #sortProducts {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .clear-filters-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .clear-filters-btn:hover {
+            background-color: #e9ecef;
+        }
+
+        /* Product List Section */
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .product-link {
+            text-decoration: none;
+            color: inherit;
+            flex: 1;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+            background: #f8f9fa;
+            padding: 20px;
+        }
+
+        .product-card-content {
+            padding: 20px;
+        }
+
+        .product-card h4 {
+            font-size: 16px;
+            margin: 0 0 10px;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .product-category {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+            text-transform: capitalize;
+        }
+
+        .rating {
+            color: #ffc107;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .rating .reviews {
+            color: #666;
+            margin-left: 5px;
+        }
+
+        .price-container {
+            margin: 15px 0;
+        }
+
+        .price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .current-price {
+            font-size: 20px;
+            font-weight: 600;
+            color: #4CAF50;
+        }
+
+        .original-price {
+            font-size: 16px;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .discount-tag {
+            display: inline-block;
+            background: #ffebee;
+            color: #e53935;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+
+        .add-to-cart-btn {
+            width: calc(100% - 40px);
+            margin: 0 20px 20px;
+            padding: 12px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .add-to-cart-btn:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin: 40px 0;
+            padding: 0;
+        }
+
+        .page-numbers {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .pagination-btn {
+            min-width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e0e0e0;
+            background: white;
+            color: #333;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            padding: 0;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .pagination-btn.number {
+            font-weight: 500;
+        }
+
+        .pagination-btn:not(.disabled):hover {
+            background: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+        }
+
+        .pagination-btn.active {
+            background: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+
+        .pagination-btn.disabled {
+            background: #f5f5f5;
+            color: #bdbdbd;
+            cursor: not-allowed;
+            border-color: #e0e0e0;
+        }
+
+        .pagination-btn.prev,
+        .pagination-btn.next {
+            font-size: 14px;
+            background: white;
+            border: 1px solid #e0e0e0;
+        }
+
+        .pagination-dots {
+            color: #666;
+            font-size: 16px;
+            padding: 0 4px;
+            user-select: none;
+        }
+
+        /* No Products Message */
+        .no-products-message {
+            text-align: center;
+            padding: 40px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            grid-column: 1 / -1;
+        }
+
+        .no-products-message p {
+            color: #666;
+            margin-bottom: 0;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 992px) {
+            .products-container {
+                grid-template-columns: 200px 1fr;
+            }
+
+            .product-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .products-container {
+                grid-template-columns: 1fr;
+            }
+
+            .filters {
+                position: static;
+                margin-bottom: 20px;
+            }
+
+            .product-list {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+
+            .pagination {
+                flex-wrap: wrap;
+            }
+
+            .page-numbers {
+                order: 2;
+                width: 100%;
+                justify-content: center;
+                margin-top: 8px;
+            }
+
+            .pagination-btn {
+                min-width: 36px;
+                height: 36px;
+                font-size: 14px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .product-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Main Content -->
+    <main>
+        <h1 class="page-title">Our Products</h1>
+        <div class="products-container">
+            <aside class="filters">
+                <div class="filter-box">
+                    <h3>Categories</h3>
+                    <ul class="category-filters">
+                        <li>
+                            <input type="checkbox" id="electronics" value="electronics">
+                            <label for="electronics">Electronics</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="fashion" value="fashion">
+                            <label for="fashion">Fashion</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="home" value="home">
+                            <label for="home">Home & Living</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="beauty" value="beauty">
+                            <label for="beauty">Beauty</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="sports" value="sports">
+                            <label for="sports">Sports & Fitness</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="health" value="health">
+                            <label for="health">Health</label>
+                        </li>
+                    </ul>
+                </div>
+                 
+                <div class="filter-box">
+                    <h3>Price</h3>
+                    <div class="price-filter">
+                        <input type="range" min="0" max="60000" step="1000" id="priceFilter" value="60000">
+                        <div class="price-display">
+                            <span>Up to ₹</span><span id="priceValue">60000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-box">
+                    <h3>Sort By</h3>
+                    <select id="sortProducts">
+                        <option value="default">Default</option>
+                        <option value="price-low-high">Price: Low to High</option>
+                        <option value="price-high-low">Price: High to Low</option>
+                        <option value="rating">Rating</option>
+                    </select>
+                </div>
+
+                <button id="clearFilters" class="clear-filters-btn">Clear All Filters</button>
+            </aside>
+
+            <section class="product-list">
+                <!-- Products will be dynamically added here -->
+            </section>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <button id="prevPage" class="pagination-btn prev" aria-label="Previous page">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div id="pageNumbers" class="page-numbers"></div>
+            <button id="nextPage" class="pagination-btn next" aria-label="Next page">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- JavaScript -->
+    <script src="js/components.js"></script>
+    <script src="js/product.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize variables
+            const PRODUCTS_PER_PAGE = 6;
+            let currentPage = 1;
+            let filteredProducts = [...productData];
+
+            // Function to display products
+            function displayProducts(page = 1) {
+                const start = (page - 1) * PRODUCTS_PER_PAGE;
+                const end = start + PRODUCTS_PER_PAGE;
+                const paginatedProducts = filteredProducts.slice(start, end);
+                const productList = document.querySelector('.product-list');
+
+                productList.innerHTML = '';
+
+                paginatedProducts.forEach(product => {
+                    const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
+                    const imageUrl = product.images ? product.images[0] : `https://placehold.co/400x300/f8f9fa/4CAF50?text=${encodeURIComponent(product.name)}`;
+
+                    productList.innerHTML += `
+                        <div class="product-card">
+                            <a href="product-view.html?id=${product.id}" class="product-link">
+                                <img src="${imageUrl}" alt="${product.name}">
+                                <div class="product-card-content">
+                                    <h4>${product.name}</h4>
+                                    <p class="product-category">${product.category}</p>
+                                    <div class="rating">
+                                        ${generateStars(product.rating)}
+                                        <span class="reviews">(${product.reviews})</span>
+                                    </div>
+                                    <div class="price-container">
+                                        <div class="price">
+                                            <span class="current-price">₹${product.price.toLocaleString('en-IN')}</span>
+                                            <span class="original-price">₹${product.originalPrice.toLocaleString('en-IN')}</span>
+                                        </div>
+                                        <span class="discount-tag">${discount}% off</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <button class="add-to-cart-btn" data-product-id="${product.id}">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    `;
+                });
+
+                // Add event listeners to add-to-cart buttons
+                document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                    button.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        event.stopPropagation(); // Prevent event bubbling
+                        
+                        const productId = parseInt(this.getAttribute('data-product-id'));
+                        const product = productData.find(p => p.id === productId);
+                        
+                        if (product) {
+                            addProductToCart(product);
+                        }
+                    });
+                });
+
+                updatePagination();
+            }
+
+            // Function to generate rating stars
+            function generateStars(rating) {
+                const fullStars = Math.floor(rating);
+                const hasHalfStar = rating % 1 !== 0;
+                let starsHTML = '';
+                
+                for (let i = 0; i < 5; i++) {
+                    if (i < fullStars) {
+                        starsHTML += '<i class="fas fa-star"></i>';
+                    } else if (i === fullStars && hasHalfStar) {
+                        starsHTML += '<i class="fas fa-star-half-alt"></i>';
+                    } else {
+                        starsHTML += '<i class="far fa-star"></i>';
+                    }
+                }
+                
+                return starsHTML;
+            }
+
+            // Function to update pagination
+            function updatePagination() {
+                const totalPages = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE);
+                const pageNumbers = document.getElementById('pageNumbers');
+                const prevButton = document.getElementById('prevPage');
+                const nextButton = document.getElementById('nextPage');
+
+                pageNumbers.innerHTML = '';
+
+                // Previous button
+                prevButton.className = `pagination-btn prev${currentPage === 1 ? ' disabled' : ''}`;
+
+                // Next button
+                nextButton.className = `pagination-btn next${currentPage === totalPages ? ' disabled' : ''}`;
+
+                // Generate page numbers with ellipsis
+                let pages = [];
+                const maxVisiblePages = 7;
+
+                if (totalPages <= maxVisiblePages) {
+                    // Show all pages if total pages are less than max visible
+                    for (let i = 1; i <= totalPages; i++) {
+                        pages.push(i);
+                    }
+                } else {
+                    // Always show first page
+                    pages.push(1);
+
+                    if (currentPage > 3) {
+                        pages.push('...');
+                    }
+
+                    // Show pages around current page
+                    for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
+                        pages.push(i);
+                    }
+
+                    if (currentPage < totalPages - 2) {
+                        pages.push('...');
+                    }
+
+                    // Always show last page
+                    if (totalPages > 1) {
+                        pages.push(totalPages);
+                    }
+                }
+
+                // Create page number buttons
+                pages.forEach(page => {
+                    if (page === '...') {
+                        const span = document.createElement('span');
+                        span.className = 'pagination-dots';
+                        span.textContent = '...';
+                        pageNumbers.appendChild(span);
+                    } else {
+                        const button = document.createElement('button');
+                        button.className = `pagination-btn number${page === currentPage ? ' active' : ''}`;
+                        button.textContent = page;
+                        button.onclick = () => {
+                            if (page !== currentPage) {
+                                currentPage = page;
+                                displayProducts(page);
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }
+                        };
+                        pageNumbers.appendChild(button);
+                    }
+                });
+
+                // Add event listeners to prev/next buttons
+                prevButton.onclick = () => {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        displayProducts(currentPage);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                };
+
+                nextButton.onclick = () => {
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        displayProducts(currentPage);
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                };
+            }
+
+            // Setup filters
+            const categoryCheckboxes = document.querySelectorAll('.category-filters input[type="checkbox"]');
+            const priceFilter = document.getElementById('priceFilter');
+            const sortSelect = document.getElementById('sortProducts');
+            const clearFiltersBtn = document.getElementById('clearFilters');
+            const priceValue = document.getElementById('priceValue');
+
+            function applyFilters() {
+                filteredProducts = [...productData];
+
+                // Apply category filters
+                const selectedCategories = Array.from(categoryCheckboxes)
+                    .filter(checkbox => checkbox.checked)
+                    .map(checkbox => checkbox.value);
+
+                if (selectedCategories.length > 0) {
+                    filteredProducts = filteredProducts.filter(product => 
+                        selectedCategories.includes(product.category)
+                    );
+                }
+                
+                // Apply price filter
+                const maxPrice = parseInt(priceFilter.value);
+                filteredProducts = filteredProducts.filter(product => product.price <= maxPrice);
+                priceValue.textContent = maxPrice.toLocaleString('en-IN');
+                
+                // Apply sorting
+                const sortValue = sortSelect.value;
+                        switch(sortValue) {
+                            case 'price-low-high':
+                        filteredProducts.sort((a, b) => a.price - b.price);
+                        break;
+                            case 'price-high-low':
+                        filteredProducts.sort((a, b) => b.price - a.price);
+                        break;
+                    case 'rating':
+                        filteredProducts.sort((a, b) => b.rating - a.rating);
+                        break;
+                }
+
+                currentPage = 1;
+                displayProducts(1);
+            }
+
+            // Add event listeners
+            categoryCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', applyFilters);
+            });
+
+            priceFilter.addEventListener('input', applyFilters);
+            sortSelect.addEventListener('change', applyFilters);
+
+            clearFiltersBtn.addEventListener('click', () => {
+                categoryCheckboxes.forEach(checkbox => checkbox.checked = false);
+                priceFilter.value = priceFilter.max;
+                sortSelect.value = 'default';
+                priceValue.textContent = priceFilter.max.toLocaleString('en-IN');
+                
+                filteredProducts = [...productData];
+                currentPage = 1;
+                displayProducts(1);
+            });
+
+            // Initial display
+            displayProducts(1);
+        });
+
+        // Custom function to add product to cart safely
+        function addProductToCart(product) {
+            // Skip if product is invalid
+            if (!product || !product.id || !product.name || !product.price) {
+                console.error('Invalid product data:', product);
+                return;
+            }
+            
+            try {
+                // Get existing cart
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                
+                // Check if product already exists in cart
+                const existingItemIndex = cart.findIndex(item => item.id === product.id);
+                
+                if (existingItemIndex !== -1) {
+                    // Update quantity if product exists
+                    cart[existingItemIndex].quantity += 1;
+                } else {
+                    // Add new item with quantity
+                    cart.push({
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        quantity: 1,
+                        image: product.images ? product.images[0] : `https://placehold.co/400x300/f8f9fa/4CAF50?text=${encodeURIComponent(product.name)}`,
+                        category: product.category || 'Product'
+                    });
+                }
+                
+                // Save updated cart to localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+                
+                // Update cart count display
+                if (window.updateCartCount) {
+                    window.updateCartCount();
+                }
+                
+                // Show notification
+                if (window.showNotification) {
+                    window.showNotification(`${product.name} added to cart!`);
+                } else {
+                    alert(`${product.name} added to cart!`);
+                }
+            } catch (error) {
+                console.error('Error adding product to cart:', error);
+                alert('Sorry, there was an error adding the product to your cart.');
+            }
+        }
+    </script>
+</body>
+</html>
+
+

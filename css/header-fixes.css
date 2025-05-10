@@ -1,0 +1,214 @@
+/* Header Layout Fixes */
+
+/* Update overall navbar layout */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: relative;
+    background-color: white;
+    height: 70px;
+}
+
+/* Create right section of navbar to align elements */
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+/* Logo adjustments */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 24px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.logo h1 span {
+    color: #4CAF50;
+}
+
+/* Menu adjustments */
+.nav-links ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* Menu icon positioning */
+.hamburger {
+    display: none;
+    margin-left: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Fix cart icon positioning and styling to match screenshots */
+.cart-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+    padding: 5px;
+    font-size: 20px;
+}
+
+.cart-icon a {
+    display: flex;
+    position: relative;
+    color: #333;
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-icon a i {
+    font-size: 20px;
+}
+
+.cart-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Search container adjustments */
+.search-container {
+    margin: 0 20px;
+    flex: 1;
+    max-width: 400px;
+}
+
+/* Responsive fixes */
+@media screen and (max-width: 992px) {
+    .hamburger {
+        display: block;
+    }
+    
+    .cart-icon {
+        margin-right: 10px;
+    }
+    
+    .logo h1 {
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+    
+    .search-container {
+        max-width: 200px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .logo h1 {
+        font-size: 20px;
+    }
+    
+    .cart-icon {
+        margin-right: 5px;
+        margin-left: 10px;
+    }
+}
+
+/* Cart/Checkout/Confirmation Page Fixes */
+.cart-container,
+.checkout-container,
+.confirmation-container {
+    padding-top: 20px;
+}
+
+/* Fix cart page specific styles for mobile */
+@media screen and (max-width: 992px) {
+    .cart-wrapper,
+    .checkout-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .order-summary {
+        position: static;
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .cart-container,
+    .checkout-container,
+    .confirmation-container {
+        padding: 15px;
+        margin-top: 10px;
+    }
+
+    .cart-table {
+        font-size: 14px;
+    }
+
+    .checkout-form {
+        padding: 20px 15px;
+    }
+
+    .confirmation-box {
+        padding: 25px 15px;
+    }
+
+    .action-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .action-buttons a {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .cart-table .item-image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .quantity-selector {
+        margin: 0 auto;
+    }
+
+    .cart-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .cart-actions button,
+    .cart-actions a {
+        width: 100%;
+        text-align: center;
+        margin: 5px 0;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+} 

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping Policy | ShopEase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .policy-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        .page-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .page-title p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .policy-section {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .policy-section h2 {
+            color: #4CAF50;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .policy-section p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .shipping-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .shipping-table th,
+        .shipping-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .shipping-table th {
+            background: #f8f8f8;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .shipping-table td {
+            color: #666;
+        }
+
+        .shipping-note {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .shipping-note h3 {
+            color: #333;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .shipping-note p {
+            margin-bottom: 0;
+        }
+
+        .contact-section {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        .contact-section h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .contact-section p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .policy-container {
+                margin: 30px auto;
+            }
+
+            .page-title h1 {
+                font-size: 2rem;
+            }
+
+            .policy-section {
+                padding: 20px;
+            }
+
+            .shipping-table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="policy-container">
+            <div class="page-title">
+                <h1>Shipping Policy</h1>
+                <p>Information about our shipping methods, delivery times, and costs</p>
+            </div>
+
+            <div class="policy-section">
+                <h2>Shipping Methods</h2>
+                <p>At ShopEase, we offer various shipping options to ensure your orders reach you in the most convenient way possible. Our shipping partners are carefully selected to provide reliable and efficient delivery services.</p>
+                
+                <table class="shipping-table">
+                    <thead>
+                        <tr>
+                            <th>Shipping Method</th>
+                            <th>Delivery Time</th>
+                            <th>Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Standard Delivery</td>
+                            <td>3-5 business days</td>
+                            <td>₹49 (Free above ₹499)</td>
+                        </tr>
+                        <tr>
+                            <td>Express Delivery</td>
+                            <td>1-2 business days</td>
+                            <td>₹99</td>
+                        </tr>
+                        <tr>
+                            <td>Same Day Delivery</td>
+                            <td>Within 24 hours</td>
+                            <td>₹199 (Select cities only)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="policy-section">
+                <h2>Delivery Areas</h2>
+                <p>We currently deliver to most locations across India. Delivery times may vary based on your location:</p>
+                <ul style="color: #666; line-height: 1.6; margin-left: 20px;">
+                    <li>Metro Cities: 2-3 business days</li>
+                    <li>Tier 2 Cities: 3-5 business days</li>
+                    <li>Other Cities: 5-7 business days</li>
+                    <li>Remote Areas: 7-10 business days</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h2>Order Tracking</h2>
+                <p>Once your order is shipped, you will receive:</p>
+                <ul style="color: #666; line-height: 1.6; margin-left: 20px;">
+                    <li>A shipping confirmation email with tracking number</li>
+                    <li>Real-time tracking updates via SMS</li>
+                    <li>Access to detailed tracking information on our website</li>
+                </ul>
+            </div>
+
+            <div class="policy-section">
+                <h2>Shipping Restrictions</h2>
+                <p>Please note the following restrictions:</p>
+                <ul style="color: #666; line-height: 1.6; margin-left: 20px;">
+                    <li>Certain items may not be eligible for express or same-day delivery</li>
+                    <li>Some remote areas might have limited delivery options</li>
+                    <li>Hazardous materials have special shipping requirements</li>
+                    <li>International shipping is currently not available</li>
+                </ul>
+            </div>
+
+            <div class="shipping-note">
+                <h3><i class="fas fa-info-circle"></i> Important Note</h3>
+                <p>Delivery times are estimates and may be affected by factors such as weather conditions, public holidays, or other unforeseen circumstances. We will keep you informed of any significant delays affecting your order.</p>
+            </div>
+
+            <div class="contact-section">
+                <h3>Need Help with Shipping?</h3>
+                <p>Our customer support team is available to assist you with any shipping-related queries</p>
+                <a href="contact.html" class="contact-btn">Contact Us</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html> 

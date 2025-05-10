@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation | ShopEase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header-fixes.css">
+    <style>
+        /* Order Confirmation Page Specific Styles */
+        .confirmation-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .confirmation-box {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .confirmation-title {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .confirmation-message {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .order-details {
+            background-color: #f9f9f9;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .order-info {
+            margin-bottom: 20px;
+        }
+
+        .order-info h3 {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .order-info p {
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .order-info strong {
+            color: #333;
+        }
+
+        .continue-shopping-btn {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .continue-shopping-btn:hover {
+            background-color: #45a049;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .track-order-btn {
+            display: inline-block;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 12px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .track-order-btn:hover {
+            background-color: #e0e0e0;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .confirmation-container {
+                margin: 30px auto;
+            }
+
+            .confirmation-box {
+                padding: 30px 20px;
+            }
+
+            .action-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .track-order-btn {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="confirmation-container">
+            <div class="confirmation-box">
+                <i class="fas fa-check-circle success-icon"></i>
+                <h1 class="confirmation-title">Order Confirmed!</h1>
+                <p class="confirmation-message">Thank you for your purchase. Your order has been successfully placed.</p>
+                
+                <div class="order-details">
+                    <div class="order-info">
+                        <h3>Order Information</h3>
+                        <p><strong>Order Number:</strong> <span id="orderNumber">ORD-23456789</span></p>
+                        <p><strong>Date:</strong> <span id="orderDate"></span></p>
+                        <p><strong>Total Amount:</strong> <span id="orderTotal">₹1,499.00</span></p>
+                        <p><strong>Payment Method:</strong> <span id="paymentMethod">Credit Card</span></p>
+                    </div>
+                    <div class="order-info">
+                        <h3>Shipping Information</h3>
+                        <p><strong>Estimated Delivery:</strong> <span id="deliveryDate"></span></p>
+                        <p><strong>Shipping Address:</strong> <span id="shippingAddress">123 Commerce Street, Anytown, CA 12345</span></p>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <a href="index.html" class="continue-shopping-btn">Continue Shopping</a>
+                    <a href="#" class="track-order-btn">Track Order</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- JavaScript -->
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current date as order date
+            const orderDate = new Date();
+            document.getElementById('orderDate').textContent = orderDate.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            
+            // Set delivery date (current date + 5 days)
+            const deliveryDate = new Date();
+            deliveryDate.setDate(orderDate.getDate() + 5);
+            document.getElementById('deliveryDate').textContent = deliveryDate.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            
+            // Generate random order number
+            const randomOrder = Math.floor(10000000 + Math.random() * 90000000);
+            document.getElementById('orderNumber').textContent = `ORD-${randomOrder}`;
+        });
+    </script>
+</body>
+</html>

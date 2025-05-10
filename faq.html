@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | ShopEase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .faq-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        .page-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .page-title p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .faq-section {
+            margin-bottom: 40px;
+        }
+
+        .faq-section h2 {
+            color: #4CAF50;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #f8f8f8;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-question {
+            color: #4CAF50;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 1000px;
+            border-top: 1px solid #eee;
+        }
+
+        .contact-section {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        .contact-section h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .contact-section p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .faq-container {
+                margin: 30px auto;
+            }
+
+            .page-title h1 {
+                font-size: 2rem;
+            }
+
+            .faq-question {
+                padding: 15px;
+                font-size: 0.9rem;
+            }
+
+            .faq-answer {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="faq-container">
+            <div class="page-title">
+                <h1>Frequently Asked Questions</h1>
+                <p>Find answers to common questions about shopping with ShopEase</p>
+            </div>
+
+            <div class="faq-section">
+                <h2>Orders & Shipping</h2>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How long will my order take to arrive?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Standard delivery typically takes 3-5 business days within metro cities and 5-7 business days for other locations. Express delivery is available for select products with delivery within 1-2 business days.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How can I track my order?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Once your order is shipped, you'll receive a tracking number via email. You can use this number to track your order on our website or through the courier's website.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-section">
+                <h2>Returns & Refunds</h2>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What is your return policy?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        We offer a 30-day return policy for most items. Products must be unused and in their original packaging. Some categories like beauty products and undergarments are not eligible for return due to hygiene reasons.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How long does it take to process a refund?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Once we receive your return, refunds are processed within 3-5 business days. The amount will be credited back to your original payment method. It may take an additional 5-7 business days for the amount to reflect in your account.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-section">
+                <h2>Payment & Security</h2>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What payment methods do you accept?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        We accept all major credit/debit cards, UPI, net banking, and popular digital wallets. We also offer Cash on Delivery (COD) for select products and locations.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is it safe to use my credit card on your website?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, absolutely! We use industry-standard SSL encryption to protect your payment information. Your card details are never stored on our servers and are processed through secure payment gateways.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-section">
+                <h2>Account & Orders</h2>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do I need an account to place an order?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        While you can browse our website without an account, you'll need to create one to place an order. This helps you track your orders, save your favorite items, and make future purchases easier.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I modify or cancel my order?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        You can modify or cancel your order within 1 hour of placing it. After that, if the order is already processed, you'll need to wait for delivery and then initiate a return if needed.
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-section">
+                <h3>Still have questions?</h3>
+                <p>Our customer support team is here to help you 24/7</p>
+                <a href="contact.html" class="contact-btn">Contact Us</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script>
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all other items
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html> 

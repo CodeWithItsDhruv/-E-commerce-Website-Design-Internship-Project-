@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | ShopEase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header-fixes.css">
+    <style>
+        /* About Page Specific Styles */
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .about-section {
+            margin-bottom: 60px;
+        }
+
+        .about-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .about-section h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 3px;
+            background-color: #4CAF50;
+        }
+
+        .about-section p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .mission-values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .mission-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .mission-card i {
+            font-size: 40px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .mission-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .mission-card p {
+            color: #666;
+        }
+
+        .team-section {
+            margin-top: 60px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-member img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .team-member-info {
+            padding: 20px;
+        }
+
+        .team-member-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .team-member-info p.position {
+            color: #4CAF50;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .team-member-info p.bio {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .team-social {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .team-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background-color: #f0f0f0;
+            color: #333;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .team-social a:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Main Content -->
+    <main>
+        <div class="about-content">
+            <!-- Our Story Section -->
+            <section class="about-section">
+                <h2>Our Story</h2>
+                <p>ShopEase was founded in 2020 with a simple mission: to make online shopping easy, enjoyable, and accessible to everyone. What started as a small e-commerce venture has now grown into a trusted marketplace with thousands of happy customers across the country.</p>
+                <p>Our journey began when our founders noticed a gap in the market for a user-friendly online shopping platform that prioritizes customer experience above all else. Drawing from their backgrounds in retail and technology, they built ShopEase from the ground up, focusing on simplicity, reliability, and exceptional service.</p>
+                <p>Today, we offer a wide range of products across multiple categories, from electronics and fashion to home goods and beauty products. We work directly with manufacturers and trusted suppliers to bring you quality products at competitive prices.</p>
+            </section>
+
+            <!-- Mission & Values Section -->
+            <section class="about-section">
+                <h2>Our Mission & Values</h2>
+                <p>At ShopEase, we're driven by our commitment to excellence and customer satisfaction. Our mission is to create a shopping experience that's not just convenient but truly delightful.</p>
+                
+                <div class="mission-values">
+                    <div class="mission-card">
+                        <i class="fas fa-star"></i>
+                        <h3>Quality First</h3>
+                        <p>We carefully curate our product selection, working only with trusted brands and suppliers who share our commitment to quality.</p>
+                    </div>
+                    <div class="mission-card">
+                        <i class="fas fa-users"></i>
+                        <h3>Customer Obsession</h3>
+                        <p>Your satisfaction is our top priority. We're constantly working to improve our services and address your needs.</p>
+                    </div>
+                    <div class="mission-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Trust & Reliability</h3>
+                        <p>We believe in transparent business practices and building long-term relationships based on trust and reliability.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Team Section -->
+            <section class="about-section team-section">
+                <h2>Meet Our Team</h2>
+                <p>The passionate people behind ShopEase who work tirelessly to bring you the best shopping experience.</p>
+                
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="/api/placeholder/300/300?text=John+Smith" alt="John Smith">
+                        <div class="team-member-info">
+                            <h3>John Smith</h3>
+                            <p class="position">Founder & CEO</p>
+                            <p class="bio">With over 15 years of experience in retail and e-commerce, John leads our team with vision and expertise.</p>
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="/api/placeholder/300/300?text=Sarah+Johnson" alt="Sarah Johnson">
+                        <div class="team-member-info">
+                            <h3>Sarah Johnson</h3>
+                            <p class="position">Chief Operations Officer</p>
+                            <p class="bio">Sarah ensures our operations run smoothly, from supply chain management to customer service.</p>
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="/api/placeholder/300/300?text=David+Chen" alt="David Chen">
+                        <div class="team-member-info">
+                            <h3>David Chen</h3>
+                            <p class="position">CTO</p>
+                            <p class="bio">David leads our tech team, constantly innovating to improve our platform and user experience.</p>
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <img src="/api/placeholder/300/300?text=Emily+Patel" alt="Emily Patel">
+                        <div class="team-member-info">
+                            <h3>Emily Patel</h3>
+                            <p class="position">Head of Customer Experience</p>
+                            <p class="bio">Emily works to ensure every customer has a seamless and satisfying shopping experience.</p>
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- JavaScript -->
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+</body>
+</html> 
