@@ -31,17 +31,18 @@ This is a fully responsive **E-commerce Website** developed as part of an intern
 ---
 
 ## 📂 Project Structure
-
-├── index.html                # Home Page
-├── products.html             # Products Listing
-├── product-view.html         # Product Detail View
-├── category.html             # Category-Based Listings
-├── cart.html                 # Shopping Cart
-├── checkout.html             # Checkout Form
-├── order-confirmation.html   # Order Success
-├── about.html                # About Us
-├── contact.html              # Contact Form
-└── search.html               # Search Results
+| File                     | Description         |
+|--------------------------|---------------------|
+| `index.html`             | Home Page           |
+| `products.html`          | Products Listing    |
+| `product-view.html`      | Product Detail View |
+| `category.html`          | Category Listings   |
+| `cart.html`              | Shopping Cart       |
+| `checkout.html`          | Checkout Form       |
+| `order-confirmation.html`| Order Confirmation  |
+| `about.html`             | About Us Page       |
+| `contact.html`           | Contact Form        |
+| `search.html`            | Search Results      |
 
 ---
 
