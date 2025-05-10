@@ -1,3 +1,5 @@
+Sure! Here’s your README.md file content as code, ready to copy and paste into your project:
+
 # 🛒 E-commerce Website Design (Internship Project)
 
 This is a fully responsive **E-commerce Website** developed as part of an internship project. The site includes all essential pages and components that a basic online shopping platform requires. Built using **HTML, CSS, and JavaScript**, it delivers a clean UI and a smooth user experience.
@@ -29,6 +31,7 @@ This is a fully responsive **E-commerce Website** developed as part of an intern
 ---
 
 ## 📂 Project Structure
+
 ├── index.html                # Home Page
 ├── products.html             # Products Listing
 ├── product-view.html         # Product Detail View
@@ -39,6 +42,7 @@ This is a fully responsive **E-commerce Website** developed as part of an intern
 ├── about.html                # About Us
 ├── contact.html              # Contact Form
 └── search.html               # Search Results
+
 ---
 
 ## 📌 Project Goal
@@ -61,3 +65,4 @@ If you'd like to connect, feel free to reach out:
 👨‍💻 [LinkedIn](https://www.linkedin.com/in/nextwithdhruv) | [GitHub](https://github.com/CodeWithItsDhruv)
 
 ---
+
