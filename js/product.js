@@ -2,19 +2,21 @@
  * Product functionality for ShopEase e-commerce website
  */
 
+// Function to get product image path
+function getProductImagePath(imageName) {
+    return `/assets/productimg/${imageName}`;
+}
+
 // Sample product data with more details
 const productData = [
     {
         id: 1,
-        name: "Wireless Headphones",
+        name: "Premium Wireless Headphones",
         price: 2999,
         originalPrice: 3999,
         category: "electronics",
         images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Wireless+Headphones",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Headphones+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Headphones+Front",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Headphones+Features"
+            getProductImagePath("Premium Wireless Headphones.jpg")
         ],
         description: "Experience immersive sound with our Premium Wireless Headphones. Features active noise cancellation and 40-hour battery life.",
         highlights: [
@@ -47,15 +49,12 @@ const productData = [
     },
     {
         id: 2,
-        name: "Smartwatch Pro",
+        name: "Smart Watch Pro",
         price: 4999,
         originalPrice: 5999,
         category: "electronics",
         images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Smartwatch+Pro",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Watch+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Watch+Band",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Watch+Features"
+            getProductImagePath("Smart Watch Pro.jpg")
         ],
         description: "Advanced smartwatch with health monitoring and fitness tracking features.",
         highlights: [
@@ -83,15 +82,12 @@ const productData = [
     },
     {
         id: 3,
-        name: "Running Shoes",
+        name: "Women's Running Shoes",
         price: 1999,
         originalPrice: 2499,
         category: "sports",
         images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Running+Shoes",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Shoes+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Shoes+Top",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Shoes+Features"
+            getProductImagePath("Women's Running Shoes.webp")
         ],
         description: "High-quality running shoes designed for comfort and durability.",
         highlights: [
@@ -125,10 +121,7 @@ const productData = [
         originalPrice: 399,
         category: "home",
         images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Water+Bottle",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Water+Bottle+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Water+Bottle+Top",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Water+Bottle+Features"
+            getProductImagePath("Stainless Steel Water Bottle.jpg")
         ],
         description: "Stay hydrated in style with our premium stainless steel water bottle. Features double-wall vacuum insulation to keep your drinks cold for 24 hours or hot for 12 hours. Perfect for gym, office, or outdoor activities.",
         highlights: [
@@ -159,15 +152,12 @@ const productData = [
     },
     {
         id: 5,
-        name: "Fitness Tracker",
+        name: "Smart Watch Health Monitor",
         price: 1499,
         originalPrice: 1999,
         category: "electronics",
         images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Fitness+Tracker",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Tracker+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Tracker+Band",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Tracker+Features"
+            getProductImagePath("Smart Watch Health Monitor.jpg")
         ],
         description: "Advanced fitness tracker with heart rate monitoring, sleep tracking, and activity tracking.",
         highlights: [
@@ -200,10 +190,7 @@ const productData = [
         originalPrice: 1799,
         category: "fashion",
         images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Backpack+Pro",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Backpack+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Backpack+Inside",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Backpack+Features"
+            getProductImagePath("Backpack Pro.webp")
         ],
         description: "Professional backpack with laptop compartment and anti-theft features. Water-resistant material and USB charging port.",
         highlights: [
@@ -237,10 +224,7 @@ const productData = [
         originalPrice: 999,
         category: "home",
         images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Desk+Lamp",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Lamp+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Lamp+Light",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Lamp+Features"
+            getProductImagePath("Desk Lamp LED.avif")
         ],
         description: "Eco-friendly LED desk lamp with adjustable brightness and color temperature.",
         highlights: [
@@ -268,15 +252,12 @@ const productData = [
     },
     {
         id: 8,
-        name: "Yoga Mat",
+        name: "Yoga Mat Premium",
         price: 599,
         originalPrice: 799,
         category: "sports",
         images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Yoga+Mat+Basic",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Mat+Side+View",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Mat+Texture",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Mat+Features"
+            getProductImagePath("Yoga Mat Premium.webp")
         ],
         description: "Premium eco-friendly yoga mat with excellent grip and cushioning. Perfect for all types of yoga practices. Features alignment lines and moisture-resistant surface.",
         highlights: [
@@ -311,13 +292,30 @@ const productData = [
         originalPrice: 3499,
         category: "beauty",
         images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Hair+Dryer",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Dryer+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Dryer+Nozzle",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Dryer+Features"
+            getProductImagePath("Professional Hair Dryer.webp")
+        ],
+        description: "Professional-grade blender with variable speed control and pulse function. Perfect for smoothies, soups, and food processing.",
+        highlights: [
+            "1200W Motor",
+            "Variable Speed",
+            "6 Pre-set Programs",
+            "2L Capacity",
+            "Dishwasher Safe"
+        ],
+        specifications: {
+            "Brand": "ShopEase Kitchen",
+            "Power": "1200W",
+            "Capacity": "2L",
+            "Speed": "Variable",
+            "Material": "Tritan",
+            "Warranty": "2 years"
+        },
+        colors: [
+            { name: "Silver", code: "#C0C0C0" },
+            { name: "Black", code: "#000000" }
         ],
         rating: 4.7,
-        reviews: 156,
+        reviews: 189,
         inStock: true
     },
     {
@@ -327,10 +325,27 @@ const productData = [
         originalPrice: 49999,
         category: "electronics",
         images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Smart+TV",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=TV+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=TV+Ports",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=TV+Features"
+            getProductImagePath("Smart LED TV 55-inch.jpg")
+        ],
+        description: "Next-gen gaming console with 4K graphics, ray tracing, and fast loading. Includes wireless controller and built-in storage.",
+        highlights: [
+            "4K Gaming",
+            "Ray Tracing",
+            "Fast Loading",
+            "Wireless Controller",
+            "Digital Edition"
+        ],
+        specifications: {
+            "Brand": "ShopEase Gaming",
+            "Storage": "1TB SSD",
+            "Resolution": "4K",
+            "RAM": "16GB",
+            "Processor": "Custom 8-core",
+            "Warranty": "1 year"
+        },
+        colors: [
+            { name: "White", code: "#FFFFFF" },
+            { name: "Black", code: "#000000" }
         ],
         rating: 4.8,
         reviews: 203,
@@ -342,13 +357,28 @@ const productData = [
         price: 4999,
         originalPrice: 6999,
         category: "home",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Coffee+Maker",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Maker+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Maker+Front",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Maker+Features"
+        images: [getProductImagePath("Coffee Maker Pro.avif")],
+        description: "Professional coffee maker with built-in grinder and programmable settings. Perfect for coffee enthusiasts.",
+        highlights: [
+            "Built-in Grinder",
+            "Programmable Settings",
+            "12-cup capacity",
+            "Auto-off Timer",
+            "Easy Clean"
         ],
-        rating: 4.6,
+        specifications: {
+            "Brand": "ShopEase Kitchen",
+            "Power": "1500W",
+            "Grinder": "Burr",
+            "Capacity": "12 cups",
+            "Temperature Range": "140-195°F",
+            "Brew Type": "Pump"
+        },
+        colors: [
+            { name: "Black", code: "#333333" },
+            { name: "Silver", code: "#C0C0C0" }
+        ],
+        rating: 4.7,
         reviews: 178,
         inStock: true
     },
@@ -358,13 +388,28 @@ const productData = [
         price: 1999,
         originalPrice: 2999,
         category: "fashion",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Laptop+Bag",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Bag+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Bag+Inside",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Bag+Features"
+        images: [getProductImagePath("Leather Laptop Bag.webp")],
+        description: "Professional leather laptop bag with padded compartments and RFID protection. Perfect for protecting your laptop and documents.",
+        highlights: [
+            "Padded Compartments",
+            "RFID Protection",
+            "Water-resistant",
+            "Adjustable Strap",
+            "Multiple Colors"
         ],
-        rating: 4.5,
+        specifications: {
+            "Brand": "ShopEase Travel",
+            "Capacity": "15L",
+            "Material": "Leather",
+            "Dimensions": "30x20x5cm",
+            "Weight": "700g",
+            "Warranty": "1 year"
+        },
+        colors: [
+            { name: "Black", code: "#000000" },
+            { name: "Brown", code: "#8B4513" }
+        ],
+        rating: 4.6,
         reviews: 142,
         inStock: true
     },
@@ -374,11 +419,26 @@ const productData = [
         price: 2999,
         originalPrice: 3999,
         category: "electronics",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Gaming+Keyboard",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Keyboard+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Keyboard+RGB",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Keyboard+Features"
+        images: [getProductImagePath("Gaming Keyboard RGB.jpg")],
+        description: "Mechanical gaming keyboard with RGB backlighting and programmable keys. Perfect for competitive gaming.",
+        highlights: [
+            "RGB Backlighting",
+            "Programmable Keys",
+            "N-key Rollover",
+            "Cherry MX Switches",
+            "Detachable Cable"
+        ],
+        specifications: {
+            "Brand": "ShopEase Gaming",
+            "Switch Type": "Cherry MX",
+            "Keycaps": "PBT Double-shot",
+            "Backlight": "RGB",
+            "Connectivity": "USB-C",
+            "Weight": "1.2kg"
+        },
+        colors: [
+            { name: "Black", code: "#000000" },
+            { name: "White", code: "#FFFFFF" }
         ],
         rating: 4.7,
         reviews: 189,
@@ -390,11 +450,27 @@ const productData = [
         price: 799,
         originalPrice: 1299,
         category: "sports",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Resistance+Bands",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Bands+Set",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Bands+Usage",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Bands+Features"
+        images: [getProductImagePath("Fitness Resistance Bands Set.jpeg")],
+        description: "Set of resistance bands with handles for strength training and stretching. Perfect for home workouts.",
+        highlights: [
+            "Assorted Colors",
+            "Handles for Stability",
+            "Ergonomic Design",
+            "Durable Material",
+            "Compact Storage"
+        ],
+        specifications: {
+            "Brand": "ShopEase Fitness",
+            "Material": "Nylon",
+            "Length": "120cm",
+            "Width": "10cm",
+            "Weight": "300g",
+            "Resistance Levels": "5"
+        },
+        colors: [
+            { name: "Black", code: "#000000" },
+            { name: "Blue", code: "#0000FF" },
+            { name: "Red", code: "#FF0000" }
         ],
         rating: 4.5,
         reviews: 234,
@@ -406,12 +482,7 @@ const productData = [
         price: 14999,
         originalPrice: 19999,
         category: "home",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Robot+Vacuum",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Vacuum+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Vacuum+Top",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Vacuum+Features"
-        ],
+        images: [getProductImagePath("Smart Robot Vacuum Cleaner.avif")],
         description: "Smart robot vacuum with mapping technology, app control, and automatic charging. Features multiple cleaning modes and works on all floor types.",
         highlights: [
             "Smart Mapping",
@@ -442,12 +513,7 @@ const productData = [
         price: 5999,
         originalPrice: 7999,
         category: "electronics",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Drawing+Tablet",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Tablet+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Tablet+Usage",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Tablet+Features"
-        ],
+        images: [getProductImagePath("Digital Drawing Tablet.jpg")],
         description: "Professional drawing tablet with 8192 pressure levels, tilt support, and customizable shortcut keys. Perfect for digital artists and designers.",
         highlights: [
             "8192 Pressure Levels",
@@ -477,12 +543,7 @@ const productData = [
         price: 8999,
         originalPrice: 11999,
         category: "home",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Air+Purifier",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Purifier+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Purifier+Front",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Purifier+Features"
-        ],
+        images: [getProductImagePath("Air Purifier HEPA.jpg")],
         description: "Advanced air purifier with True HEPA filter, activated carbon filter, and UV-C light. Removes 99.97% of airborne particles as small as 0.3 microns.",
         highlights: [
             "True HEPA Filter",
@@ -512,12 +573,7 @@ const productData = [
         price: 1499,
         originalPrice: 1999,
         category: "electronics",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Charger+Stand",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Stand+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Stand+Usage",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Stand+Features"
-        ],
+        images: [getProductImagePath("Wireless Charger Stand.jpg")],
         description: "2-in-1 wireless charging stand for smartphone and smartwatch. Features fast charging and adjustable angle.",
         highlights: [
             "15W Fast Charging",
@@ -544,32 +600,11 @@ const productData = [
     },
     {
         id: 19,
-        name: "Yoga Mat Premium",
-        price: 1299,
-        originalPrice: 1799,
-        category: "sports",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Yoga+Mat",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Mat+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Mat+Rolled",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Mat+Features"
-        ],
-        rating: 4.6,
-        reviews: 178,
-        inStock: true
-    },
-    {
-        id: 20,
         name: "Smart Light Bulb",
         price: 799,
         originalPrice: 999,
         category: "home",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Smart+Bulb",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Bulb+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Bulb+On",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Bulb+Features"
-        ],
+        images: [getProductImagePath("Smart Light Bulb.webp")],
         description: "Smart LED bulb with millions of colors and app control. Works with voice assistants.",
         highlights: [
             "16M Colors",
@@ -594,33 +629,42 @@ const productData = [
         inStock: true
     },
     {
-        id: 21,
+        id: 20,
         name: "Face Moisturizer",
         price: 599,
         originalPrice: 799,
         category: "beauty",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Face+Moisturizer",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Moisturizer+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Moisturizer+Back",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Moisturizer+Features"
+        images: [getProductImagePath("Face Moisturizer.webp")],
+        description: "Moisturizing face cream with SPF protection. Perfect for daily use.",
+        highlights: [
+            "SPF 30",
+            "Hydrating Formula",
+            "Non-greasy",
+            "Long-lasting",
+            "Broad Spectrum"
+        ],
+        specifications: {
+            "Brand": "ShopEase Beauty",
+            "Type": "Cream",
+            "Scent": "Unscented",
+            "Size": "50ml",
+            "Skin Type": "All"
+        },
+        colors: [
+            { name: "White", code: "#FFFFFF" },
+            { name: "Brown", code: "#8B4513" }
         ],
         rating: 4.5,
         reviews: 312,
         inStock: true
     },
     {
-        id: 22,
+        id: 21,
         name: "Smart Door Lock",
         price: 7999,
         originalPrice: 9999,
         category: "home",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Smart+Lock",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Lock+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Lock+Usage",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Lock+Features"
-        ],
+        images: [getProductImagePath("Smart Door Lock.avif")],
         description: "Smart door lock with fingerprint, PIN, and app access. Features auto-lock, temporary access codes, and break-in alarm.",
         highlights: [
             "Fingerprint Access",
@@ -646,17 +690,12 @@ const productData = [
         inStock: true
     },
     {
-        id: 23,
+        id: 22,
         name: "Wireless Earbuds Pro",
         price: 4999,
         originalPrice: 6999,
         category: "electronics",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Wireless+Earbuds",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Earbuds+Case",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Earbuds+Fit",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Earbuds+Features"
-        ],
+        images: [getProductImagePath("Wireless Earbuds Pro.jpg")],
         description: "Premium wireless earbuds with active noise cancellation, transparency mode, and spatial audio. Features 24-hour battery life with case.",
         highlights: [
             "Active Noise Cancellation",
@@ -682,17 +721,12 @@ const productData = [
         inStock: true
     },
     {
-        id: 24,
+        id: 23,
         name: "Yoga Block Set",
         price: 599,
         originalPrice: 899,
         category: "sports",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Yoga+Blocks",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Blocks+Set",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Blocks+Usage",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Blocks+Features"
-        ],
+        images: [getProductImagePath("Yoga Block Set.jpeg")],
         description: "High-density foam yoga blocks set with strap. Perfect for improving flexibility and maintaining proper alignment in yoga poses.",
         highlights: [
             "High-density Foam",
@@ -719,17 +753,12 @@ const productData = [
         inStock: true
     },
     {
-        id: 25,
+        id: 24,
         name: "Blender Pro",
         price: 3999,
         originalPrice: 4999,
         category: "home",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Blender+Pro",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Blender+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Blender+Top",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Blender+Features"
-        ],
+        images: [getProductImagePath("Blender Pro.avif")],
         description: "Professional-grade blender with variable speed control and pulse function. Perfect for smoothies, soups, and food processing.",
         highlights: [
             "1200W Motor",
@@ -755,17 +784,12 @@ const productData = [
         inStock: true
     },
     {
-        id: 26,
+        id: 25,
         name: "Gaming Console Pro",
         price: 49999,
         originalPrice: 54999,
         category: "electronics",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Gaming+Console",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Console+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Console+Front",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Console+Features"
-        ],
+        images: [getProductImagePath("Gaming Console Pro.jpg")],
         description: "Next-gen gaming console with 4K graphics, ray tracing, and fast loading. Includes wireless controller and built-in storage.",
         highlights: [
             "4K Gaming",
@@ -791,17 +815,12 @@ const productData = [
         inStock: true
     },
     {
-        id: 27,
+        id: 26,
         name: "Massage Chair",
         price: 29999,
         originalPrice: 34999,
         category: "home",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Massage+Chair",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Chair+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Chair+Back",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Chair+Features"
-        ],
+        images: [getProductImagePath("Massage Chair.avif")],
         description: "Full-body massage chair with zero gravity, heat therapy, and multiple massage modes. Features Bluetooth speakers and USB charging.",
         highlights: [
             "Zero Gravity",
@@ -827,17 +846,12 @@ const productData = [
         inStock: true
     },
     {
-        id: 28,
+        id: 27,
         name: "Digital Piano",
         price: 34999,
         originalPrice: 39999,
         category: "electronics",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Digital+Piano",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Piano+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Piano+Keys",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Piano+Features"
-        ],
+        images: [getProductImagePath("Digital Piano.jpg")],
         description: "88-key weighted digital piano with authentic grand piano sound. Features built-in lessons, recording, and USB-MIDI connectivity.",
         highlights: [
             "88 Weighted Keys",
@@ -863,17 +877,12 @@ const productData = [
         inStock: true
     },
     {
-        id: 29,
+        id: 28,
         name: "Smart Garden",
         price: 8999,
         originalPrice: 9999,
         category: "home",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Smart+Garden",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Garden+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Garden+Plants",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Garden+Features"
-        ],
+        images: [getProductImagePath("Smart Garden.avif")],
         description: "Indoor smart garden with automatic watering and LED grow lights. Grow fresh herbs and vegetables year-round.",
         highlights: [
             "Auto Watering",
@@ -899,17 +908,12 @@ const productData = [
         inStock: true
     },
     {
-        id: 30,
+        id: 29,
         name: "Electric Toothbrush Pro",
         price: 2999,
         originalPrice: 3999,
         category: "beauty",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Electric+Toothbrush",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Toothbrush+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Toothbrush+Heads",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Toothbrush+Features"
-        ],
+        images: [getProductImagePath("Electric Toothbrush Pro.webp")],
         description: "Smart electric toothbrush with pressure sensor and multiple cleaning modes. Features app connectivity and real-time feedback.",
         highlights: [
             "Pressure Sensor",
@@ -936,17 +940,12 @@ const productData = [
         inStock: true
     },
     {
-        id: 31,
+        id: 30,
         name: "Dumbbell Set Adjustable",
         price: 7999,
         originalPrice: 9999,
         category: "sports",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Dumbbell+Set",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Dumbbells+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Dumbbells+Rack",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Dumbbells+Features"
-        ],
+        images: [getProductImagePath("Dumbbell Set Adjustable.webp")],
         description: "Adjustable dumbbell set with quick-lock mechanism. Weight range from 2.5kg to 24kg per dumbbell. Space-saving design.",
         highlights: [
             "2.5-24kg Range",
@@ -971,17 +970,12 @@ const productData = [
         inStock: true
     },
     {
-        id: 32,
+        id: 31,
         name: "Air Fryer Digital",
         price: 4999,
         originalPrice: 5999,
         category: "home",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Air+Fryer",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Fryer+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Fryer+Basket",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Fryer+Features"
-        ],
+        images: [getProductImagePath("Air Fryer Digital.jpg")],
         description: "Digital air fryer with 8 preset programs and large capacity. Features touch control panel and dishwasher-safe parts.",
         highlights: [
             "8 Preset Programs",
@@ -1007,17 +1001,12 @@ const productData = [
         inStock: true
     },
     {
-        id: 33,
+        id: 32,
         name: "Wireless Mouse Silent",
         price: 999,
         originalPrice: 1499,
         category: "electronics",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Wireless+Mouse",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Mouse+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Mouse+Top",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Mouse+Features"
-        ],
+        images: [getProductImagePath("Wireless Mouse Silent.jpg")],
         description: "Silent wireless mouse with ergonomic design and long battery life. Perfect for office use with noise-free clicks.",
         highlights: [
             "Silent Clicks",
@@ -1044,17 +1033,12 @@ const productData = [
         inStock: true
     },
     {
-        id: 34,
+        id: 33,
         name: "Mechanical Keyboard TKL",
         price: 5999,
         originalPrice: 7499,
         category: "electronics",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Mechanical+Keyboard",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Keyboard+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Keyboard+Switches",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Keyboard+Features"
-        ],
+        images: [getProductImagePath("Mechanical Keyboard TKL.jpg")],
         description: "Tenkeyless mechanical keyboard with hot-swappable switches and RGB backlighting. Perfect for gaming and typing.",
         highlights: [
             "Hot-swappable Switches",
@@ -1080,17 +1064,12 @@ const productData = [
         inStock: true
     },
     {
-        id: 35,
+        id: 34,
         name: "Smart Scale",
         price: 1999,
         originalPrice: 2499,
         category: "health",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Smart+Scale",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Scale+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Scale+Display",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Scale+Features"
-        ],
+        images: [getProductImagePath("Smart Scale.webp")],
         description: "Smart body composition scale with app connectivity. Measures weight, body fat, muscle mass, and more.",
         highlights: [
             "13 Body Metrics",
@@ -1116,17 +1095,12 @@ const productData = [
         inStock: true
     },
     {
-        id: 36,
+        id: 35,
         name: "Coffee Grinder",
         price: 2499,
         originalPrice: 2999,
         category: "home",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Coffee+Grinder",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Grinder+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Grinder+Top",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Grinder+Features"
-        ],
+        images: [getProductImagePath("Coffee Grinder.jpg")],
         description: "Electric coffee grinder with conical burr and 40 grind settings. Perfect for espresso to French press.",
         highlights: [
             "40 Grind Settings",
@@ -1152,17 +1126,12 @@ const productData = [
         inStock: true
     },
     {
-        id: 37,
+        id: 36,
         name: "Laptop Stand",
         price: 999,
         originalPrice: 1299,
         category: "electronics",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Laptop+Stand",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Stand+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Stand+Folded",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Stand+Features"
-        ],
+        images: [getProductImagePath("Laptop Stand.jpg")],
         description: "Adjustable aluminum laptop stand with cooling design. Compatible with laptops up to 17 inches.",
         highlights: [
             "Adjustable Height",
@@ -1188,17 +1157,12 @@ const productData = [
         inStock: true
     },
     {
-        id: 38,
+        id: 37,
         name: "Smart Door Bell",
         price: 3999,
         originalPrice: 4999,
         category: "home",
-        images: [
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Smart+Doorbell",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Doorbell+Side",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Doorbell+Camera",
-            "https://placehold.co/600x600/f8f9fa/4CAF50?text=Doorbell+Features"
-        ],
+        images: [getProductImagePath("Smart Door Bell.webp")],
         description: "WiFi video doorbell with HD camera and two-way audio. Features motion detection and night vision.",
         highlights: [
             "1080p HD Video",
@@ -1224,6 +1188,25 @@ const productData = [
         inStock: true
     }
 ];
+
+// Update each product's images array to use actual images
+productData.forEach(product => {
+    const fileName = `${product.name}.jpg`;  // Default extension
+    const webpName = `${product.name}.webp`;
+    const avifName = `${product.name}.avif`;
+    const jpegName = `${product.name}.jpeg`;
+    
+    // Check which format exists and use that
+    if (productData.some(p => p.images.includes(getProductImagePath(webpName)))) {
+        product.images = [getProductImagePath(webpName)];
+    } else if (productData.some(p => p.images.includes(getProductImagePath(avifName)))) {
+        product.images = [getProductImagePath(avifName)];
+    } else if (productData.some(p => p.images.includes(getProductImagePath(jpegName)))) {
+        product.images = [getProductImagePath(jpegName)];
+    } else {
+        product.images = [getProductImagePath(fileName)];
+    }
+});
 
 // Make productData available globally
 window.productData = productData;

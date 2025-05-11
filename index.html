@@ -14,7 +14,8 @@
             position: relative;
             overflow: hidden;
             width: 100%;
-            height: 500px;
+            height: 600px;  /* Increased height for better visibility */
+            background: #000;  /* Dark background for better contrast */
         }
 
         .slider {
@@ -30,17 +31,20 @@
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: opacity 1s ease;
+            transition: opacity 0.8s ease-in-out;
+            background: #000;
         }
 
         .slide.active {
             opacity: 1;
+            z-index: 1;
         }
 
         .slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            opacity: 0.7;  /* Slightly dim the image for better text readability */
         }
 
         .slide-content {
@@ -49,40 +53,64 @@
             left: 10%;
             transform: translateY(-50%);
             color: white;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-            max-width: 500px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            border-radius: 10px;
         }
 
         .slide-content h2 {
-            font-size: 3rem;
-            margin-bottom: 15px;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
         }
 
         .slide-content p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
             font-size: 1.2rem;
-            margin-bottom: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
         }
 
         .slide-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.5);
-            color: #333;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
             border: none;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            font-size: 18px;
+            font-size: 24px;
             cursor: pointer;
             transition: all 0.3s ease;
+            z-index: 3;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
         .slide-btn:hover {
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.4);
         }
 
         .prev-btn {
@@ -99,6 +127,8 @@
             left: 50%;
             transform: translateX(-50%);
             display: flex;
+            gap: 10px;
+            z-index: 3;
         }
 
         .dot {
@@ -106,7 +136,6 @@
             height: 12px;
             background-color: rgba(255, 255, 255, 0.5);
             border-radius: 50%;
-            margin: 0 5px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -114,6 +143,7 @@
         .dot.active,
         .dot:hover {
             background-color: #fff;
+            transform: scale(1.2);
         }
 
         /* Shop by Category */
@@ -510,12 +540,13 @@
 
         @media screen and (max-width: 768px) {
             .slider-container {
-                height: 350px;
+                height: 400px;
             }
 
             .slide-content {
                 left: 5%;
-                max-width: 90%;
+                right: 5%;
+                text-align: center;
             }
 
             .slide-content h2 {
@@ -523,7 +554,12 @@
             }
 
             .slide-content p {
-                font-size: 0.9rem;
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 12px 24px;
+                font-size: 1rem;
             }
 
             .categories {
@@ -601,6 +637,20 @@
             .product-badge {
                 font-size: 10px;
                 padding: 3px 6px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .slider-container {
+                height: 300px;
+            }
+
+            .slide-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .slide-content p {
+                font-size: 0.9rem;
             }
         }
 
@@ -901,27 +951,27 @@
         <section class="slider-container">
             <div class="slider">
                 <div class="slide active">
-                    <img src="https://placehold.co/1920x500/4CAF50/ffffff?text=New+Arrivals" alt="New Arrivals">
+                    <img src="assets/productimg/Gaming Console Pro.jpg" alt="New Arrivals">
                     <div class="slide-content">
                         <h2>New Arrivals</h2>
-                        <p>Discover our latest collection of trending products</p>
-                        <a href="products.html" class="cta-button">Shop Now</a>
+                        <p>Check out our latest Gaming Console Pro with 4K graphics!</p>
+                        <a href="product-view.html?id=26" class="cta-button">Shop Now</a>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="https://placehold.co/1920x500/45a049/ffffff?text=Special+Offers" alt="Special Offers">
+                    <img src="assets/productimg/Smart Watch Pro.jpg" alt="Special Offers">
                     <div class="slide-content">
                         <h2>Special Offers</h2>
-                        <p>Get up to 50% off on selected items</p>
-                        <a href="products.html" class="cta-button">View Deals</a>
+                        <p>Get up to 50% off on Smart Watch Pro!</p>
+                        <a href="product-view.html?id=2" class="cta-button">View Deals</a>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="https://placehold.co/1920x500/388e3c/ffffff?text=Premium+Collection" alt="Premium Collection">
+                    <img src="assets/productimg/Digital Piano.jpg" alt="Premium Collection">
                     <div class="slide-content">
                         <h2>Premium Collection</h2>
-                        <p>Explore our exclusive premium products</p>
-                        <a href="products.html" class="cta-button">Discover More</a>
+                        <p>Explore our exclusive Digital Piano collection!</p>
+                        <a href="product-view.html?id=28" class="cta-button">Discover More</a>
                     </div>
                 </div>
             </div>
@@ -942,39 +992,19 @@
             </div>
             <div class="category-grid">
                 <a href="products.html?category=electronics" class="category-card">
-                    <img src="https://via.placeholder.com/400x250/f8f9fa/4CAF50?text=Electronics" alt="Electronics Category">
-                    <div class="placeholder-text">
-                        <h4>Electronics Category Image</h4>
-                        <p>Image showing various electronic devices like laptops, phones, and gadgets</p>
-                        <span class="dimension-text">400x250 pixels</span>
-                    </div>
+                    <img src="assets/productimg/Gaming Console Pro.jpg" alt="Electronics Category">
                     <h3>Electronics</h3>
                 </a>
                 <a href="products.html?category=fashion" class="category-card">
-                    <img src="https://via.placeholder.com/400x250/f8f9fa/4CAF50?text=Fashion" alt="Fashion Category">
-                    <div class="placeholder-text">
-                        <h4>Fashion Category Image</h4>
-                        <p>Image displaying trendy clothing and accessories</p>
-                        <span class="dimension-text">400x250 pixels</span>
-                    </div>
+                    <img src="assets/productimg/Leather Laptop Bag.webp" alt="Fashion Category">
                     <h3>Fashion</h3>
                 </a>
                 <a href="products.html?category=home" class="category-card">
-                    <img src="https://via.placeholder.com/400x250/f8f9fa/4CAF50?text=Home+Living" alt="Home & Living Category">
-                    <div class="placeholder-text">
-                        <h4>Home & Living Category Image</h4>
-                        <p>Image showing home decor and furniture items</p>
-                        <span class="dimension-text">400x250 pixels</span>
-                    </div>
+                    <img src="assets/productimg/Smart Robot Vacuum Cleaner.avif" alt="Home & Living Category">
                     <h3>Home & Living</h3>
                 </a>
                 <a href="products.html?category=beauty" class="category-card">
-                    <img src="https://via.placeholder.com/400x250/f8f9fa/4CAF50?text=Beauty" alt="Beauty Category">
-                    <div class="placeholder-text">
-                        <h4>Beauty Category Image</h4>
-                        <p>Image featuring beauty and cosmetic products</p>
-                        <span class="dimension-text">400x250 pixels</span>
-                    </div>
+                    <img src="assets/productimg/Face Moisturizer.webp" alt="Beauty Category">
                     <h3>Beauty</h3>
                 </a>
             </div>
@@ -991,11 +1021,7 @@
                     <div class="product-badge new">New</div>
                     <a href="product-view.html?id=26" class="product-link">
                         <div class="image-placeholder">
-                            <div class="placeholder-text">
-                                <h4>Gaming Console Pro</h4>
-                                <p>High-quality image of a modern gaming console with controllers</p>
-                                <span class="dimension-text">400x300 pixels</span>
-                            </div>
+                            <img src="assets/productimg/Gaming Console Pro.jpg" alt="Gaming Console Pro" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <div class="product-card-content">
                             <h3 class="product-title">Gaming Console Pro</h3>
@@ -1024,11 +1050,7 @@
                     <div class="product-badge hot">Hot</div>
                     <a href="product-view.html?id=28" class="product-link">
                         <div class="image-placeholder">
-                            <div class="placeholder-text">
-                                <h4>Digital Piano</h4>
-                                <p>Professional digital piano with weighted keys</p>
-                                <span class="dimension-text">400x300 pixels</span>
-                            </div>
+                            <img src="assets/productimg/Digital Piano.jpg" alt="Digital Piano" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <div class="product-card-content">
                             <h3 class="product-title">Digital Piano</h3>
@@ -1057,11 +1079,7 @@
                     <div class="product-badge sale">Sale</div>
                     <a href="product-view.html?id=23" class="product-link">
                         <div class="image-placeholder">
-                            <div class="placeholder-text">
-                                <h4>Wireless Earbuds Pro</h4>
-                                <p>Premium wireless earbuds with charging case</p>
-                                <span class="dimension-text">400x300 pixels</span>
-                            </div>
+                            <img src="assets/productimg/Wireless Earbuds Pro.jpg" alt="Wireless Earbuds Pro" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <div class="product-card-content">
                             <h3 class="product-title">Wireless Earbuds Pro</h3>
@@ -1090,11 +1108,7 @@
                     <div class="product-badge popular">Popular</div>
                     <a href="product-view.html?id=2" class="product-link">
                         <div class="image-placeholder">
-                            <div class="placeholder-text">
-                                <h4>Smart Watch Pro</h4>
-                                <p>Advanced smartwatch with health monitoring features</p>
-                                <span class="dimension-text">400x300 pixels</span>
-                            </div>
+                            <img src="assets/productimg/Smart Watch Pro.jpg" alt="Smart Watch Pro" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         <div class="product-card-content">
                             <h3 class="product-title">Smart Watch Pro</h3>
@@ -1223,6 +1237,69 @@
                     window.showNotification(`${product.name} added to cart!`);
                 }
             }
+
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            let currentSlide = 0;
+            const slideCount = slides.length;
+            let slideInterval;
+
+            // Function to update slide display
+            function updateSlides(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+                currentSlide = index;
+            }
+
+            // Auto slide function
+            function startSlideShow() {
+                slideInterval = setInterval(() => {
+                    let nextIndex = (currentSlide + 1) % slideCount;
+                    updateSlides(nextIndex);
+                }, 5000); // Change slide every 5 seconds
+            }
+
+            // Event listeners for navigation
+            prevBtn.addEventListener('click', () => {
+                clearInterval(slideInterval);
+                let prevIndex = (currentSlide - 1 + slideCount) % slideCount;
+                updateSlides(prevIndex);
+                startSlideShow();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                clearInterval(slideInterval);
+                let nextIndex = (currentSlide + 1) % slideCount;
+                updateSlides(nextIndex);
+                startSlideShow();
+            });
+
+            // Add click events to dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    clearInterval(slideInterval);
+                    updateSlides(index);
+                    startSlideShow();
+                });
+            });
+
+            // Start the slideshow
+            startSlideShow();
+
+            // Pause slideshow when hovering over slider
+            const sliderContainer = document.querySelector('.slider-container');
+            sliderContainer.addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+            });
+
+            sliderContainer.addEventListener('mouseleave', () => {
+                startSlideShow();
+            });
         });
     </script>
 </body>
